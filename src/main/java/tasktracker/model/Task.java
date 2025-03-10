@@ -98,8 +98,8 @@ public class Task {
 		jObj.put("ID", this.getId());
 		jObj.put("description", this.getDescription());
 		jObj.put("status", this.getStatus());
-		jObj.put("created-at", this.getCreatedAt());
-		jObj.put("updated-at", this.getUpdatedAt());
+		jObj.put("created-at", this.getCreatedAt().toString());
+		jObj.put("updated-at", this.getUpdatedAt().toString());
 
 		return jObj;
 
