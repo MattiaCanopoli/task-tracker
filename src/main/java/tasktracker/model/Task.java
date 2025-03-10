@@ -105,4 +105,12 @@ public class Task {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Task [id=" + this.id + ", description=" + this.description
+				+ ", status=" + this.status + ", createdAt="
+				+ this.getFormattedCreatedAt() + ", updatedAt="
+				+ this.getFormattedUpadatedAt() + "]";
+	}
+
 }
