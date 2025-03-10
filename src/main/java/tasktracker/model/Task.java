@@ -93,13 +93,13 @@ public class Task {
 	}
 
 	// json methods
-	public JSONObject taskToJSON(Task task) {
+	public JSONObject toJSON() {
 		JSONObject jObj = new JSONObject();
-		jObj.put("ID", task.getId());
-		jObj.put("description", task.getDescription());
-		jObj.put("status", task.getStatus());
-		jObj.put("created-at", task.getCreatedAt());
-		jObj.put("updated-at", task.getUpdatedAt());
+		jObj.put("ID", this.getId());
+		jObj.put("description", this.getDescription());
+		jObj.put("status", this.getStatus());
+		jObj.put("created-at", this.getCreatedAt());
+		jObj.put("updated-at", this.getUpdatedAt());
 
 		return jObj;
 
