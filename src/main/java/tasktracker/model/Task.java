@@ -60,6 +60,10 @@ public class Task {
 		return updatedAt;
 	}
 
+	public String getFormattedUpadatedAt() {
+		return this.updatedAt.format(formatter);
+	}
+
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
@@ -82,6 +86,10 @@ public class Task {
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
+	}
+
+	public String getFormattedCreatedAt() {
+		return this.updatedAt.format(formatter);
 	}
 
 	// json methods
