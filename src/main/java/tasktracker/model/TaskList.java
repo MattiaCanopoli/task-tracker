@@ -23,7 +23,9 @@ public class TaskList {
 			for (int i = 0; i < jArray.length(); i++) {
 				JSONObject jOby = jArray.getJSONObject(i);
 				Task task = new Task(jOby);
+				this.list = new ArrayList<Task>();
 				this.list.add(task);
+
 			}
 		}
 	}
@@ -41,4 +43,5 @@ public class TaskList {
 
 		return null;
 	}
+
 }
