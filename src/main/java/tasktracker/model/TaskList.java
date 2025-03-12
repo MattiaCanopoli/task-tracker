@@ -1,7 +1,14 @@
 package tasktracker.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TaskList<T extends Task> extends ArrayList<T> {
+public class TaskList {
+
+	private List<Task> list;
+
+	public TaskList() {
+		this.list = new ArrayList<>();
+	}
 
 }
