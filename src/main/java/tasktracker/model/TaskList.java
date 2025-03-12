@@ -51,7 +51,6 @@ public class TaskList {
 
 		if (this.list.isEmpty()) {
 			taskList = RED_BOLD + "No task found";
-			// return taskList;
 		}
 		for (Task t : this.list) {
 			taskList += t.toString() + "\n";
