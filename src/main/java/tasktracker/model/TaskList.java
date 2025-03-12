@@ -12,6 +12,7 @@ import tasktracker.utils.JSONUtils;
 public class TaskList {
 
 	private List<Task> list;
+	private final String RED_BOLD = "\033[1;31m";
 
 	public TaskList() {
 		this.list = new ArrayList<>();
@@ -42,6 +43,20 @@ public class TaskList {
 		}
 
 		return null;
+	}
+
+	public String toString() {
+		String taskList = "";
+
+		if (this.list.isEmpty()) {
+			taskList = RED_BOLD + "No task found";
+			return taskList;
+		}
+		for (Task t : this.list) {
+			taskList += t.toString() + "\n";
+		}
+
+		return taskList;
 	}
 
 }

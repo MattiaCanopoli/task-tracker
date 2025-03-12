@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 public class Task {
 
+	private final String CYAN_BOLD = "\033[1;36m";
 	private static int lastID = 1;
 	private DateTimeFormatter formatter = DateTimeFormatter
 			.ofPattern("dd/MM/yyyy hh:mm:ss");
@@ -107,10 +108,10 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "ID=" + this.id + ", description=" + this.description
-				+ ", status=" + this.status + ", createdAt="
-				+ this.getFormattedCreatedAt() + ", updatedAt="
-				+ this.getFormattedUpadatedAt();
+		return CYAN_BOLD + "ID: " + this.id + ", description: "
+				+ this.description + ", status: " + this.status
+				+ ", created at: " + this.getFormattedCreatedAt()
+				+ ", updated at: " + this.getFormattedUpadatedAt();
 	}
 
 }
