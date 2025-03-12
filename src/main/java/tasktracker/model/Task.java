@@ -8,6 +8,7 @@ import org.json.JSONObject;
 public class Task {
 
 	private final String CYAN_BOLD = "\033[1;36m";
+	private final String COLOR_RESET = "\033[0m";
 	private static int lastID = 1;
 	private DateTimeFormatter formatter = DateTimeFormatter
 			.ofPattern("dd/MM/yyyy hh:mm:ss");
@@ -111,7 +112,8 @@ public class Task {
 		return CYAN_BOLD + "ID: " + this.id + ", description: "
 				+ this.description + ", status: " + this.status
 				+ ", created at: " + this.getFormattedCreatedAt()
-				+ ", updated at: " + this.getFormattedUpadatedAt();
+				+ ", updated at: " + this.getFormattedUpadatedAt()
+				+ COLOR_RESET;
 	}
 
 }

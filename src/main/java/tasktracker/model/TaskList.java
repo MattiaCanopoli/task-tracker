@@ -13,6 +13,7 @@ public class TaskList {
 
 	private List<Task> list;
 	private final String RED_BOLD = "\033[1;31m";
+	private final String COLOR_RESET = "\033[0m";
 
 	public TaskList() {
 		this.list = new ArrayList<>();
@@ -50,13 +51,13 @@ public class TaskList {
 
 		if (this.list.isEmpty()) {
 			taskList = RED_BOLD + "No task found";
-			return taskList;
+			// return taskList;
 		}
 		for (Task t : this.list) {
 			taskList += t.toString() + "\n";
 		}
 
-		return taskList;
+		return taskList + COLOR_RESET;
 	}
 
 }
