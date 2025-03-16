@@ -7,8 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import tasktracker.model.Color;
+import tasktracker.model.Task;
+import tasktracker.model.TaskList;
 
 public class JSONUtils {
 
@@ -66,5 +69,17 @@ public class JSONUtils {
 			e.printStackTrace();
 		}
 	}
+	public static void updateJSON(TaskList<Task> list, String path) {
 
+		JSONArray jArray = new JSONArray();
+
+		for (Task t : list) {
+			JSONObject jObj = t.toJSON();
+			jArray.put(jObj);
+		}
+
+		File file = new File(path);
+
+		writeJSONtoFile(file, jArray);
+	}
 }
