@@ -13,13 +13,20 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 
 		JSONArray jArray = JSONUtils.getArrayFromFile(filePath);
 
+		int lastId = 0;
 		for (int i = 0; i < jArray.length(); i++) {
 
 			JSONObject jOby = jArray.getJSONObject(i);
 			Task task = new Task(jOby);
 			this.add(task);
+			if (task.getId() > lastId) {
+				lastId = task.getId();
+			}
 
 		}
+
+		Task.setLastID(lastId);
+		System.out.println(Task.getLastID());
 	}
 
 	public Task getTaskByID(int ID) {
