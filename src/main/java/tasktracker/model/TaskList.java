@@ -32,6 +32,15 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		return null;
 	}
 
+	public void updateStatus(int ID, String status) {
+		Task taskToUpdate = getTaskByID(ID);
+		if (!(taskToUpdate == null)) {
+			taskToUpdate.setStatus(status);
+		} else {
+			System.out.println("Wrong ID");
+		}
+	}
+
 	public void deleteTask(int ID) {
 		Task taskToDelete = getTaskByID(ID);
 		if (!(taskToDelete == null)) {
