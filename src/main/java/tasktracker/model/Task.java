@@ -109,11 +109,11 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return CYAN_BOLD + "ID: " + this.id + ", description: "
+		return Color.CYAN_BOLD.toString() + "ID: " + this.id + ", description: "
 				+ this.description + ", status: " + this.status
 				+ ", created at: " + this.getFormattedCreatedAt()
 				+ ", updated at: " + this.getFormattedUpadatedAt()
-				+ COLOR_RESET;
+				+ Color.RESET.toString();
 	}
 
 }
