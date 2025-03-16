@@ -70,5 +70,17 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 
 		return taskList + Color.RESET.toString();
 	}
+	public TaskList() {
+		// TODO Auto-generated constructor stub
+	}
 
+	public String toString(String status) {
+		TaskList<Task> list = new TaskList<Task>();
+		for (Task t : this) {
+			if (t.getStatus().equals(status)) {
+				list.add(t);
+			}
+		}
+		return list.toString();
+	}
 }
