@@ -29,9 +29,7 @@ public class JSONUtils {
 		try {
 			if (!file.exists()) {
 				file.createNewFile();
-				FileWriter fw = new FileWriter(file);
-				fw.append(jArray.toString());
-				fw.close();
+				writeJSONtoFile(file, jArray);
 				System.out.println(Color.CYAN_BOLD.toString()
 						+ "new task-tracker file created in: "
 						+ Color.RESET.toString() + "\"" + path + "\"");
@@ -54,6 +52,19 @@ public class JSONUtils {
 		}
 
 		return fileContent;
+	}
+
+	private static void writeJSONtoFile(File file, JSONArray jArray) {
+		FileWriter fw;
+
+		try {
+			fw = new FileWriter(file);
+			fw.append(jArray.toString());
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
