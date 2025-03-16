@@ -9,12 +9,6 @@ import tasktracker.utils.JSONUtils;
 
 public class TaskList<T extends Task> extends ArrayList<Task> {
 
-	// private List<Task> list;
-	//
-	// public TaskList() {
-	// this.list = new ArrayList<>();
-	// }
-
 	public TaskList(String filePath) {
 
 		JSONArray jArray = JSONUtils.getArrayFromFile(filePath);
