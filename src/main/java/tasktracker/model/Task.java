@@ -19,7 +19,7 @@ public class Task {
 
 	// constructor
 	public Task(String description) {
-		this.id = lastID++;
+		this.id = lastID + 1;
 		this.description = description;
 		this.status = statusList[0];
 		this.createdAt = LocalDateTime.now();
@@ -75,6 +75,10 @@ public class Task {
 
 	public static int getLastID() {
 		return lastID;
+	}
+
+	public static void setLastID(int ID) {
+		lastID = ID;
 	}
 
 	public DateTimeFormatter getFormatter() {
