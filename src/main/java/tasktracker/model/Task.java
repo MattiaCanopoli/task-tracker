@@ -13,7 +13,7 @@ public class Task {
 	private int id;
 	private String description;
 	private String status;
-	private final String[] statusList = {"todo", "in-progress", "done"};
+	private final static String[] statusList = {"todo", "in-progress", "done"};
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 
@@ -53,7 +53,12 @@ public class Task {
 	}
 
 	public void setStatus(String status) {
-		this.status = status;
+		if (Task.isValidStatus(status)) {
+			this.status = status;
+		} else {
+			System.out.println("Invalid status");
+		}
+
 	}
 
 	public LocalDateTime getUpdatedAt() {
@@ -80,8 +85,19 @@ public class Task {
 		return id;
 	}
 
-	public String[] getStatusList() {
+	public static String[] getStatusList() {
 		return statusList;
+	}
+
+	private static boolean isValidStatus(String status) {
+
+		for (String s : Task.getStatusList()) {
+			if (s.equals(status)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public LocalDateTime getCreatedAt() {
