@@ -1,6 +1,5 @@
 package tasktracker.model;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +16,16 @@ public class TaskList {
 		this.list = new ArrayList<>();
 	}
 
-	public TaskList(File json) {
-		JSONArray jArray = JSONUtils.getArrayFromFile(json);
-		if (jArray.length() > 0) {
-			for (int i = 0; i < jArray.length(); i++) {
-				JSONObject jOby = jArray.getJSONObject(i);
-				Task task = new Task(jOby);
-				this.list = new ArrayList<Task>();
-				this.list.add(task);
+	public TaskList(String filePath) {
+		JSONArray jArray = JSONUtils.getArrayFromFile(filePath);
 
-			}
+		for (int i = 0; i < jArray.length(); i++) {
+
+			JSONObject jOby = jArray.getJSONObject(i);
+			Task task = new Task(jOby);
+			this.list = new ArrayList<Task>();
+			this.list.add(task);
+
 		}
 	}
 
