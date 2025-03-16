@@ -12,8 +12,6 @@ import tasktracker.utils.JSONUtils;
 public class TaskList {
 
 	private List<Task> list;
-	private final String RED_BOLD = "\033[1;31m";
-	private final String COLOR_RESET = "\033[0m";
 
 	public TaskList() {
 		this.list = new ArrayList<>();
@@ -50,13 +48,13 @@ public class TaskList {
 		String taskList = "";
 
 		if (this.list.isEmpty()) {
-			taskList = RED_BOLD + "No task found";
+			taskList = Color.RED_BOLD.toString() + "No task found";
 		}
 		for (Task t : this.list) {
 			taskList += t.toString() + "\n";
 		}
 
-		return taskList + COLOR_RESET;
+		return taskList + Color.RESET.toString();
 	}
 
 }
