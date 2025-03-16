@@ -8,6 +8,8 @@ import java.nio.file.Path;
 
 import org.json.JSONArray;
 
+import tasktracker.model.Color;
+
 public class JSONUtils {
 
 	public static JSONArray getArrayFromFile(String path) {
@@ -30,6 +32,9 @@ public class JSONUtils {
 				FileWriter fw = new FileWriter(file);
 				fw.append(jArray.toString());
 				fw.close();
+				System.out.println(Color.CYAN_BOLD.toString()
+						+ "new task-tracker file created in: "
+						+ Color.RESET.toString() + "\"" + path + "\"");
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -44,9 +49,7 @@ public class JSONUtils {
 		String fileContent = "";
 		try {
 			fileContent += Files.readString(Path.of(file.getAbsolutePath()));
-			System.out.println("Content: " + fileContent);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
