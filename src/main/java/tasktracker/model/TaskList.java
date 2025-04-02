@@ -58,8 +58,8 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 	public void deleteTask(int ID) {
 		Task taskToDelete = getTaskByID(ID);
 		if (!(taskToDelete == null)) {
-
 			this.remove(taskToDelete);
+			JSONUtils.updateJSON(this, path);
 		} else {
 			System.out.println("Wrong id");
 		}
