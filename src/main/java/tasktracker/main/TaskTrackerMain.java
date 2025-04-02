@@ -71,21 +71,42 @@ public class TaskTrackerMain {
 						list.addTask(new Task());
 					} else if (inputArr.length == 1
 							&& !inputArr[0].equals("add")) {
-						System.out.println("invalid command");
+						System.out.println(Color.RED.toString()
+								+ "\tinvalid command" + Color.RESET.toString());
 					} else if (inputArr.length == 2) {
 						list.addTask(new Task(inputArr[1]));
 					} else if (inputArr.length > 2) {
-						System.out.println("Too many arguments for \"add\"");
+						System.out.println(Color.RED.toString()
+								+ "\tToo many arguments for \"add\""
+								+ Color.RESET.toString());
 					}
 
 				}
 				// placeholders
-				case "delete" -> System.out.println("delete");
+				case "delete" -> {
+					inputArr = input.trim().split(" ");
+
+					if (inputArr.length < 2) {
+						System.out.println("A valid ID must be provided");
+					} else {
+						try {
+							Integer id = Integer.valueOf(inputArr[1]);
+							list.deleteTask(id);
+
+						} catch (NumberFormatException e) {
+							System.out.println(Color.RED.toString()
+									+ "\tThe provided ID is not a number"
+									+ Color.RESET.toString());
+						}
+					}
+
+				}
 				case "mark" -> System.out.println("mark");
 				case "update" -> System.out.println("update");
 				case "help" -> System.out.println("help");
 				case "close" -> exit = true;
-				default -> System.out.println("invalid command");
+				default -> System.out.println(Color.RED.toString()
+						+ "\tinvalid command" + Color.RESET.toString());
 			}
 		} // while end
 		scanner.close();
