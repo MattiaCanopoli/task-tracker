@@ -7,11 +7,18 @@ import org.json.JSONObject;
 
 import tasktracker.utils.JSONUtils;
 
+@SuppressWarnings("serial")
 public class TaskList<T extends Task> extends ArrayList<Task> {
 
-	public TaskList(String filePath) {
+	private String path = System.getProperty("user.dir") + "/tasklist.json";
 
-		JSONArray jArray = JSONUtils.getArrayFromFile(filePath);
+	// public TaskList() {
+	// // TODO Auto-generated constructor stub
+	// }
+
+	public TaskList() {
+
+		JSONArray jArray = JSONUtils.getArrayFromFile(path);
 
 		int lastId = 0;
 		for (int i = 0; i < jArray.length(); i++) {
@@ -58,6 +65,11 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		}
 	}
 
+	public void addTask(Task task) {
+		this.add(task);
+		JSONUtils.updateJSON(this, path);
+	}
+
 	public String toString() {
 		String taskList = "";
 
@@ -69,10 +81,6 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		}
 
 		return taskList + Color.RESET.toString();
-	}
-
-	public TaskList() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String toString(String status) {
