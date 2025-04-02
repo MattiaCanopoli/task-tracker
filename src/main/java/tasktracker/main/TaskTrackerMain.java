@@ -29,10 +29,8 @@ public class TaskTrackerMain {
 		String[] inputArr;
 		boolean exit = false;
 		Scanner scanner = new Scanner(System.in);
-		String path = System.getProperty("user.dir") + "/tasklist.json";
 
-		System.out.println(path);
-		TaskList<Task> list = new TaskList<>(path);
+		TaskList<Task> list = new TaskList<>();
 
 		System.out.println(Color.RED_BOLD.toString() + "tasklist:\t"
 				+ Color.RESET.toString()
@@ -66,8 +64,22 @@ public class TaskTrackerMain {
 								+ Color.RESET.toString());
 					}
 				}
+				case "add" -> {
+					inputArr = input.trim().split("[\"]");
+
+					if (inputArr.length == 1 && inputArr[0].equals("add")) {
+						list.addTask(new Task());
+					} else if (inputArr.length == 1
+							&& !inputArr[0].equals("add")) {
+						System.out.println("invalid command");
+					} else if (inputArr.length == 2) {
+						list.addTask(new Task(inputArr[1]));
+					} else if (inputArr.length > 2) {
+						System.out.println("Too many arguments for \"add\"");
+					}
+
+				}
 				// placeholders
-				case "add" -> System.out.println("add");
 				case "delete" -> System.out.println("delete");
 				case "mark" -> System.out.println("mark");
 				case "update" -> System.out.println("update");
