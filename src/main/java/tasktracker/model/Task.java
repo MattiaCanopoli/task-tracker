@@ -13,7 +13,7 @@ public class Task {
 	private int id;
 	private String description;
 	private String status;
-	private final static String[] statusList = {"todo", "in-progress", "done"};
+	private final static String[] statusList = {"to-do", "in-progress", "done"};
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 
