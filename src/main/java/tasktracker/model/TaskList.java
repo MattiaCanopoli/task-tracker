@@ -70,6 +70,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 
 		return taskList + Color.RESET.toString();
 	}
+
 	public TaskList() {
 		// TODO Auto-generated constructor stub
 	}
