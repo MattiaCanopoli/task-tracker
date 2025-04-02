@@ -24,6 +24,7 @@ public class Task {
 		this.status = statusList[0];
 		this.createdAt = LocalDateTime.now();
 		this.updatedAt = LocalDateTime.now();
+		Task.setLastID(id);
 
 	}
 
