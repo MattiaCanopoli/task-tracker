@@ -69,19 +69,6 @@ public class JSONUtils {
 			e.printStackTrace();
 		}
 	}
-	// public static void updateJSON(TaskList<Task> list, String path) {
-	//
-	// JSONArray jArray = new JSONArray();
-	//
-	// for (Task t : list) {
-	// JSONObject jObj = t.toJSON();
-	// jArray.put(jObj);
-	// }
-	//
-	// File file = new File(path);
-	//
-	// writeJSONtoFile(file, jArray);
-	// }
 
 	public static <T extends Task> void updateJSON(TaskList<T> taskList,
 			String path) {
