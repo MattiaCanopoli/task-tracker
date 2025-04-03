@@ -133,9 +133,36 @@ public class TaskTrackerMain {
 						System.out.println("\t" + Color.RED.toString()
 								+ "A valid ID and a valid Status must be provided"
 								+ Color.RESET.toString());
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
-				case "update" -> System.out.println("update");
+				case "update" -> {
+					int id;
+					String description;
+					try {
+						String arguments = input.substring(input.indexOf(' '))
+								.trim();
+
+						id = Integer.valueOf(arguments.split(" ")[0].trim());
+						description = arguments
+								.substring(arguments.indexOf("\"")).trim()
+								.replaceAll("\"", "");
+
+						list.updateDescription(id, description, PATH);
+					} catch (NumberFormatException e) {
+						System.out.println("\t" + Color.RED.toString()
+								+ "A valid ID must be provided"
+								+ Color.RESET.toString());
+
+					} catch (StringIndexOutOfBoundsException e) {
+						System.out.println("\t" + Color.RED.toString()
+								+ "A valid ID and a valid Status must be provided"
+								+ Color.RESET.toString());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 				case "help" -> System.out.println("help");
 				case "close" -> exit = true;
 				default -> System.out.println("\t" + Color.RED.toString()
