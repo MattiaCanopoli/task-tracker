@@ -50,12 +50,8 @@ public class TaskTrackerMain {
 					inputArr = input.trim().split(" ");
 					if (inputArr.length == 1) {
 						System.out.println(list.toString());
-						// TODO: sostituire inputArr.contains con
-						// Task.validateStatus
 					} else if ((inputArr.length > 1)
-							&& (inputArr[1].contains("to-do")
-									|| inputArr[1].contains("in-progress")
-									|| inputArr[1].contains("done"))) {
+							&& (Task.isValidStatus(inputArr[1]))) {
 						System.out.println(list.toString(inputArr[1]));
 
 					} else {
