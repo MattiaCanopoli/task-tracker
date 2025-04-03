@@ -8,7 +8,8 @@ import tasktracker.model.Task;
 import tasktracker.model.TaskList;
 
 public class TaskTrackerMain {
-
+	private static final String PATH = System.getProperty("user.dir")
+			+ "/tasklist.json";
 	private static final String COMMANDS = """
 					01. commands - show this list
 					02. list - list all saved tasks
@@ -30,7 +31,7 @@ public class TaskTrackerMain {
 		boolean exit = false;
 		Scanner scanner = new Scanner(System.in);
 
-		TaskList<Task> list = new TaskList<>();
+		TaskList<Task> list = new TaskList<>(PATH);
 
 		System.out.println(Color.RED_BOLD.toString() + "tasklist:\t"
 				+ Color.RESET.toString()
@@ -49,7 +50,8 @@ public class TaskTrackerMain {
 					inputArr = input.trim().split(" ");
 					if (inputArr.length == 1) {
 						System.out.println(list.toString());
-
+						// TODO: sostituire inputArr.contains con
+						// Task.validateStatus
 					} else if ((inputArr.length > 1)
 							&& (inputArr[1].contains("to-do")
 									|| inputArr[1].contains("in-progress")
@@ -68,13 +70,13 @@ public class TaskTrackerMain {
 					inputArr = input.trim().split("[\"]");
 
 					if (inputArr.length == 1 && inputArr[0].equals("add")) {
-						list.addTask(new Task());
+						list.addTask(new Task(), PATH);
 					} else if (inputArr.length == 1
 							&& !inputArr[0].equals("add")) {
 						System.out.println(Color.RED.toString()
 								+ "\tinvalid command" + Color.RESET.toString());
 					} else if (inputArr.length == 2) {
-						list.addTask(new Task(inputArr[1]));
+						list.addTask(new Task(inputArr[1]), PATH);
 					} else if (inputArr.length > 2) {
 						System.out.println(Color.RED.toString()
 								+ "\tToo many arguments for \"add\""
@@ -91,7 +93,7 @@ public class TaskTrackerMain {
 					} else {
 						try {
 							Integer id = Integer.valueOf(inputArr[1]);
-							list.deleteTask(id);
+							list.deleteTask(id, PATH);
 
 						} catch (NumberFormatException e) {
 							System.out.println(Color.RED.toString()
@@ -101,12 +103,47 @@ public class TaskTrackerMain {
 					}
 
 				}
-				case "mark" -> System.out.println("mark");
+				case "mark" -> {
+
+					int id;
+					String status;
+					try {
+						String arguments = input.substring(input.indexOf(' '))
+								.trim();
+
+						id = Integer.valueOf(arguments.split(" ")[0].trim());
+						status = arguments.substring(arguments.indexOf(" "))
+								.trim();
+
+						if (Task.isValidStatus(status)) {
+							list.markStatus(id, status, PATH);
+						} else {
+							System.out.println("\t" + Color.RED.toString()
+									+ "A valid status must be provided"
+									+ Color.RESET.toString());
+							System.out.println("\t" + Color.RED.toString()
+									+ "Valid status are: "
+									+ Color.CYAN_BOLD.toString()
+									+ Task.getReadabelStatusList()
+									+ Color.RESET.toString());
+						}
+
+					} catch (NumberFormatException e) {
+						System.out.println("\t" + Color.RED.toString()
+								+ "A valid ID must be provided"
+								+ Color.RESET.toString());
+
+					} catch (StringIndexOutOfBoundsException e) {
+						System.out.println("\t" + Color.RED.toString()
+								+ "A valid ID and a valid Status must be provided"
+								+ Color.RESET.toString());
+					}
+				}
 				case "update" -> System.out.println("update");
 				case "help" -> System.out.println("help");
 				case "close" -> exit = true;
-				default -> System.out.println(Color.RED.toString()
-						+ "\tinvalid command" + Color.RESET.toString());
+				default -> System.out.println("\t" + Color.RED.toString()
+						+ "invalid command" + Color.RESET.toString());
 			}
 		} // while end
 		scanner.close();
