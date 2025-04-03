@@ -15,6 +15,12 @@ import tasktracker.model.TaskList;
 
 public class JSONUtils {
 
+	/**
+	 * creates a JSONArray object form a file in the path passed as String
+	 * 
+	 * @param path
+	 * @return
+	 */
 	public static JSONArray getArrayFromFile(String path) {
 		JSONArray jArray = new JSONArray();
 
@@ -27,6 +33,15 @@ public class JSONUtils {
 		return jArray;
 	}
 
+	/**
+	 * Checks if there is already a JSON file in the path passed as String. if
+	 * not, creates a new file an write it with the content of the JSONArray.
+	 * returns the file
+	 * 
+	 * @param path
+	 * @param jArray
+	 * @return
+	 */
 	private static File createNewJSON(String path, JSONArray jArray) {
 		File file = new File(path);
 		try {
@@ -38,7 +53,6 @@ public class JSONUtils {
 						+ Color.RESET.toString() + "\"" + path + "\"");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -46,6 +60,12 @@ public class JSONUtils {
 
 	}
 
+	/**
+	 * return the content of the provided file as String
+	 * 
+	 * @param file
+	 * @return
+	 */
 	private static String getFileContent(File file) {
 		String fileContent = "";
 		try {
@@ -57,6 +77,12 @@ public class JSONUtils {
 		return fileContent;
 	}
 
+	/**
+	 * print the content of a JSONArray to a File, both passed as argument
+	 * 
+	 * @param file
+	 * @param jArray
+	 */
 	private static void writeJSONtoFile(File file, JSONArray jArray) {
 		FileWriter fw;
 
@@ -65,11 +91,18 @@ public class JSONUtils {
 			fw.append(jArray.toString());
 			fw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * print the content of a TaskList<T extends Task> to a file. file path is
+	 * passed as String in arguments
+	 * 
+	 * @param <T>
+	 * @param taskList
+	 * @param path
+	 */
 	public static <T extends Task> void updateJSON(TaskList<T> taskList,
 			String path) {
 		JSONArray jArray = new JSONArray();

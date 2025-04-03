@@ -95,6 +95,11 @@ public class Task {
 		return statusList;
 	}
 
+	/**
+	 * loops through statusList and return it as String
+	 * 
+	 * @return
+	 */
 	public static String getReadabelStatusList() {
 		String statList = "";
 		for (String s : statusList) {
@@ -115,6 +120,12 @@ public class Task {
 
 	// validation utilities
 
+	/**
+	 * check if the provided String is a valid status. return a boolean
+	 * 
+	 * @param status
+	 * @return
+	 */
 	public static boolean isValidStatus(String status) {
 
 		for (String s : Task.statusList) {
@@ -127,6 +138,12 @@ public class Task {
 	}
 
 	// json methods
+
+	/**
+	 * return this Task as JSONObject
+	 * 
+	 * @return
+	 */
 	public JSONObject toJSON() {
 		JSONObject jObj = new JSONObject();
 		jObj.put("ID", this.getId());

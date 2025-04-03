@@ -10,10 +10,12 @@ import tasktracker.utils.JSONUtils;
 @SuppressWarnings("serial")
 public class TaskList<T extends Task> extends ArrayList<Task> {
 
-	// public TaskList() {
-	// // TODO Auto-generated constructor stub
-	// }
-
+	/**
+	 * constructs a new TaskList<> starting from a JSON file. file path is
+	 * passed as string
+	 * 
+	 * @param path
+	 */
 	public TaskList(String path) {
 
 		JSONArray jArray = JSONUtils.getArrayFromFile(path);
@@ -33,11 +35,14 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		Task.setLastID(lastId);
 	}
 
-	private TaskList() {
-
-	}
-
-	public Task getTaskByID(int ID) {
+	/**
+	 * return the task having the provided ID. if no task is found, return null
+	 * 
+	 * @param ID
+	 *            int
+	 * @return Task if is found, otherwise return null
+	 */
+	private Task getTaskByID(int ID) {
 		for (Task t : this) {
 			if (t.getId() == ID) {
 				return t;
@@ -47,6 +52,15 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		return null;
 	}
 
+	/**
+	 * replace description of an existing task with a new one passed as String
+	 * and update the updatedAt field. task is get by the provided id. updates
+	 * JSON file
+	 * 
+	 * @param ID
+	 * @param newDescription
+	 * @param path
+	 */
 	public void updateDescription(int ID, String newDescription, String path) {
 		Task taskToUpdate = getTaskByID(ID);
 		if (!(taskToUpdate == null)) {
@@ -56,7 +70,15 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 			System.out.println("Task with id: " + ID + " not found");
 		}
 	}
-
+	/**
+	 * updates status of an existing task with a new one, passed as String and
+	 * update the updatedAt field. task is get by the provided id. updates JSON
+	 * file
+	 * 
+	 * @param ID
+	 * @param newDescription
+	 * @param path
+	 */
 	public void markStatus(int ID, String status, String path) {
 		Task taskToUpdate = getTaskByID(ID);
 		if (!(taskToUpdate == null)) {
@@ -67,6 +89,13 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		}
 	}
 
+	/**
+	 * delete the task having the provided ID from TaskList and updates JSON
+	 * file. if there is no task with such ID, prints an error message
+	 * 
+	 * @param ID
+	 * @param path
+	 */
 	public void deleteTask(int ID, String path) {
 		Task taskToDelete = getTaskByID(ID);
 		if (!(taskToDelete == null)) {
@@ -77,11 +106,23 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		}
 	}
 
+	/**
+	 * adds a new task to TaskList and updates JSONFile. File path is passed as
+	 * String.
+	 * 
+	 * @param task
+	 * @param path
+	 */
 	public void addTask(Task task, String path) {
 		this.add(task);
 		JSONUtils.updateJSON(this, path);
 	}
 
+	/**
+	 * returns task in TaskList as String
+	 * 
+	 * @return String
+	 */
 	public String toString() {
 		String taskList = "";
 
@@ -95,6 +136,15 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		return taskList + Color.RESET.toString();
 	}
 
+	private TaskList() {
+	}
+
+	/**
+	 * returns as String all task having the provided status, passed as String,
+	 * 
+	 * @param status
+	 * @return String
+	 */
 	public String toString(String status) {
 		TaskList<Task> list = new TaskList<Task>();
 		for (Task t : this) {
