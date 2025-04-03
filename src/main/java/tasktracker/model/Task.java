@@ -94,6 +94,16 @@ public class Task {
 		return statusList;
 	}
 
+	public static String getReadabelStatusList() {
+		String statList = "";
+		for (String s : statusList) {
+			statList += (s + ", ");
+
+		}
+
+		return statList.trim();
+	}
+
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
