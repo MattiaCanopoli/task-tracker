@@ -56,6 +56,7 @@ public class Task {
 	public void setStatus(String status) {
 		if (Task.isValidStatus(status)) {
 			this.status = status;
+			this.updatedAt = LocalDateTime.now();
 		} else {
 			System.out.println("Invalid status");
 		}
