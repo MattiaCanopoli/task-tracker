@@ -47,6 +47,16 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		return null;
 	}
 
+	public void updateDescription(int ID, String newDescription, String path) {
+		Task taskToUpdate = getTaskByID(ID);
+		if (!(taskToUpdate == null)) {
+			taskToUpdate.setDescription(newDescription);
+			JSONUtils.updateJSON(this, path);
+		} else {
+			System.out.println("Task with id: " + ID + " not found");
+		}
+	}
+
 	public void markStatus(int ID, String status, String path) {
 		Task taskToUpdate = getTaskByID(ID);
 		if (!(taskToUpdate == null)) {
