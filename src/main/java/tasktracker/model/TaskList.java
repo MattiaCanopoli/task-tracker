@@ -10,13 +10,11 @@ import tasktracker.utils.JSONUtils;
 @SuppressWarnings("serial")
 public class TaskList<T extends Task> extends ArrayList<Task> {
 
-	private String path = System.getProperty("user.dir") + "/tasklist.json";
-
 	// public TaskList() {
 	// // TODO Auto-generated constructor stub
 	// }
 
-	public TaskList() {
+	public TaskList(String path) {
 
 		JSONArray jArray = JSONUtils.getArrayFromFile(path);
 
@@ -35,6 +33,10 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		Task.setLastID(lastId);
 	}
 
+	private TaskList() {
+
+	}
+
 	public Task getTaskByID(int ID) {
 		for (Task t : this) {
 			if (t.getId() == ID) {
@@ -45,16 +47,17 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		return null;
 	}
 
-	public void markStatus(int ID, String status) {
+	public void markStatus(int ID, String status, String path) {
 		Task taskToUpdate = getTaskByID(ID);
 		if (!(taskToUpdate == null)) {
 			taskToUpdate.setStatus(status);
+			JSONUtils.updateJSON(this, path);
 		} else {
 			System.out.println("Wrong ID");
 		}
 	}
 
-	public void deleteTask(int ID) {
+	public void deleteTask(int ID, String path) {
 		Task taskToDelete = getTaskByID(ID);
 		if (!(taskToDelete == null)) {
 			this.remove(taskToDelete);
@@ -64,7 +67,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		}
 	}
 
-	public void addTask(Task task) {
+	public void addTask(Task task, String path) {
 		this.add(task);
 		JSONUtils.updateJSON(this, path);
 	}
