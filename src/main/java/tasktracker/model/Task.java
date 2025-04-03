@@ -113,6 +113,18 @@ public class Task {
 		return this.updatedAt.format(formatter);
 	}
 
+	// validation utilities
+
+	public static boolean validateStatus(String status) {
+
+		for (String s : Task.statusList) {
+			if (s.equals(status)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	// json methods
 	public JSONObject toJSON() {
 		JSONObject jObj = new JSONObject();
