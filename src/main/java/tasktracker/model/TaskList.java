@@ -33,7 +33,6 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		}
 
 		Task.setLastID(lastId);
-		System.out.println(Task.getLastID());
 	}
 
 	public Task getTaskByID(int ID) {
@@ -46,7 +45,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 		return null;
 	}
 
-	public void updateStatus(int ID, String status) {
+	public void markStatus(int ID, String status) {
 		Task taskToUpdate = getTaskByID(ID);
 		if (!(taskToUpdate == null)) {
 			taskToUpdate.setStatus(status);
