@@ -63,7 +63,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 			taskToUpdate.setStatus(status);
 			JSONUtils.updateJSON(this, path);
 		} else {
-			System.out.println("Wrong ID");
+			System.out.println("Task with id: " + ID + " not found");
 		}
 	}
 
@@ -73,7 +73,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 			this.remove(taskToDelete);
 			JSONUtils.updateJSON(this, path);
 		} else {
-			System.out.println("Wrong id");
+			System.out.println("Task with id: " + ID + " not found");
 		}
 	}
 
