@@ -97,7 +97,7 @@ public class Task {
 
 	/**
 	 * loops through statusList and return it as String
-	 * 
+	 *
 	 * @return
 	 */
 	public static String getReadabelStatusList() {
@@ -122,7 +122,7 @@ public class Task {
 
 	/**
 	 * check if the provided String is a valid status. return a boolean
-	 * 
+	 *
 	 * @param status
 	 * @return
 	 */
@@ -141,7 +141,7 @@ public class Task {
 
 	/**
 	 * return this Task as JSONObject
-	 * 
+	 *
 	 * @return
 	 */
 	public JSONObject toJSON() {

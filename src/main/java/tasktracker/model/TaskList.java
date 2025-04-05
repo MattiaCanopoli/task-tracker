@@ -13,7 +13,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 	/**
 	 * constructs a new TaskList<> starting from a JSON file. file path is
 	 * passed as string
-	 * 
+	 *
 	 * @param path
 	 */
 	public TaskList(String path) {
@@ -37,7 +37,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 
 	/**
 	 * return the task having the provided ID. if no task is found, return null
-	 * 
+	 *
 	 * @param ID
 	 *            int
 	 * @return Task if is found, otherwise return null
@@ -56,7 +56,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 	 * replace description of an existing task with a new one passed as String
 	 * and update the updatedAt field. task is get by the provided id. updates
 	 * JSON file
-	 * 
+	 *
 	 * @param ID
 	 * @param newDescription
 	 * @param path
@@ -74,7 +74,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 	 * updates status of an existing task with a new one, passed as String and
 	 * update the updatedAt field. task is get by the provided id. updates JSON
 	 * file
-	 * 
+	 *
 	 * @param ID
 	 * @param newDescription
 	 * @param path
@@ -92,7 +92,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 	/**
 	 * delete the task having the provided ID from TaskList and updates JSON
 	 * file. if there is no task with such ID, prints an error message
-	 * 
+	 *
 	 * @param ID
 	 * @param path
 	 */
@@ -109,7 +109,7 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 	/**
 	 * adds a new task to TaskList and updates JSONFile. File path is passed as
 	 * String.
-	 * 
+	 *
 	 * @param task
 	 * @param path
 	 */
@@ -120,9 +120,10 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 
 	/**
 	 * returns task in TaskList as String
-	 * 
+	 *
 	 * @return String
 	 */
+	@Override
 	public String toString() {
 		String taskList = "";
 
@@ -141,12 +142,12 @@ public class TaskList<T extends Task> extends ArrayList<Task> {
 
 	/**
 	 * returns as String all task having the provided status, passed as String,
-	 * 
+	 *
 	 * @param status
 	 * @return String
 	 */
 	public String toString(String status) {
-		TaskList<Task> list = new TaskList<Task>();
+		TaskList<Task> list = new TaskList<>();
 		for (Task t : this) {
 			if (t.getStatus().equals(status)) {
 				list.add(t);

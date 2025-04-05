@@ -17,7 +17,7 @@ public class JSONUtils {
 
 	/**
 	 * creates a JSONArray object form a file in the path passed as String
-	 * 
+	 *
 	 * @param path
 	 * @return
 	 */
@@ -37,7 +37,7 @@ public class JSONUtils {
 	 * Checks if there is already a JSON file in the path passed as String. if
 	 * not, creates a new file an write it with the content of the JSONArray.
 	 * returns the file
-	 * 
+	 *
 	 * @param path
 	 * @param jArray
 	 * @return
@@ -62,7 +62,7 @@ public class JSONUtils {
 
 	/**
 	 * return the content of the provided file as String
-	 * 
+	 *
 	 * @param file
 	 * @return
 	 */
@@ -79,7 +79,7 @@ public class JSONUtils {
 
 	/**
 	 * print the content of a JSONArray to a File, both passed as argument
-	 * 
+	 *
 	 * @param file
 	 * @param jArray
 	 */
@@ -98,7 +98,7 @@ public class JSONUtils {
 	/**
 	 * print the content of a TaskList<T extends Task> to a file. file path is
 	 * passed as String in arguments
-	 * 
+	 *
 	 * @param <T>
 	 * @param taskList
 	 * @param path
