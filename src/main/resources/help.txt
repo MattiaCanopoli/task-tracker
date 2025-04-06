@@ -3,7 +3,7 @@
 1. OVERVIEW
 ==============
 
-A Task-Tracker application with CLI inteface.
+A Task-Tracker application with CLI interface.
 To run the application, download the "task-tracker.jar file" and launch it with "java -jar path/to/file/task-tracker.jar" command.
 Upon first launch, the tasktracker.json file will be created inside the same folder of the .jar file.
 tasktracker.json stores all the tasks in json format. It is read every time the application starts and updated after every operation of add, delete, mark or update.
@@ -62,30 +62,30 @@ Arguments are indicated in square brackets.
     -------------
     list [status]
     -------------
-        Shows the tasks in your Task-Traker.
+        Shows the tasks in your Task-Tracker.
         Status argument is optional.
         If a valid status is provided, only the tasks with matching status will be shown.
-        Else, if no status is provided, all thee tasks will be shown.
+        Else, if no status is provided, all the tasks will be shown.
         Valid status are to-do; in-progress; done
 
             Examples
                 1. list -> shows all tasks
                 2. list in-progress -> shows only tasks with status "in progress"
-                3. list in progress -> wrong input invalid status. An error message will be displayed
+                3. list in progress -> invalid input (invalid status). An error message will be displayed
             
     -----------------
     add [description]
     -----------------
         Adds a new task to your Task-Tracker.
         Description argument is optional.
-        When providing a descriprion, it must be in double quotes.
+        When providing a description, it must be in double quotes.
         If no description is provided the task will be added with the default one "no description provided".
         Description can be later changed via "update" command see "update"
 
             Examples
                 1. add -> task with no description
                 2. add "my description" -> task with description
-                3. add my description -> wrong input missing double quotes. no task will be added
+                3. add my description -> invalid input (missing double quotes). no task will be added
             
     -----------
     delete [ID]
@@ -96,8 +96,8 @@ Arguments are indicated in square brackets.
 
             Examples
                 1. delete 1 -> task with ID "1" will be deleted
-                2. delete -> wrong input missing ID. No task will be deleted and an error message will be shown.
-                3. delete one -> wrong input invalid ID. No task will be deleted and an error message will be shown.
+                2. delete -> invalid input (missing ID). No task will be deleted and an error message will be shown.
+                3. delete one -> invalid input (invalid ID). No task will be deleted and an error message will be shown.
             
     ------------------
     mark [ID] [status]
@@ -108,10 +108,10 @@ Arguments are indicated in square brackets.
         Valid status are to-do; in-progress; done
 
             Examples
-                1. mark 1 done -> stutus of task with ID "1" will be changed to "done"
-                2. mark 1 -> wrong input missing status. No task will be updated and an error message will be shown.
-                3. mark done -> wrong input missing ID. No task will be updated and an error message will be shown.
-                4. mark done 1 -> wrong input argumens order. No task will be updated and an error message will be shown.
+                1. mark 1 done -> status of task with ID "1" will be changed to "done"
+                2. mark 1 -> invalid input (missing status). No task will be updated and an error message will be shown.
+                3. mark done -> invalid input (missing ID). No task will be updated and an error message will be shown.
+                4. mark done 1 -> invalid input (arguments order). No task will be updated and an error message will be shown.
             
     -------------------------
     update [ID] [description]
@@ -122,9 +122,9 @@ Arguments are indicated in square brackets.
 
             Examples
                 1. update 1 "my new description" -> description of task with ID "1" will be changed to "my new description"
-                2. update 1 -> wrong input missing description. No task will be updated and an error message will be shown.
-                3. update "my new description" -> wrong input missing ID. No task will be updated and an error message will be shown.
-                4. update "my new description" 1 -> wrong input argumens order. No task will be updated and an error message will be shown.
+                2. update 1 -> invalid input (missing description). No task will be updated and an error message will be shown.
+                3. update "my new description" -> invalid input (missing ID). No task will be updated and an error message will be shown.
+                4. update "my new description" 1 -> invalid input (argumens order). No task will be updated and an error message will be shown.
             
     ----
     help
