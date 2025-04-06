@@ -1,9 +1,9 @@
 package tasktracker.model;
 
+import org.json.JSONObject;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import org.json.JSONObject;
 
 public class Task {
 
@@ -158,10 +158,10 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return Color.CYAN_BOLD.toString() + "ID: " + this.id + ", description: "
-				+ this.description + ", status: " + this.status
-				+ ", created at: " + this.getFormattedCreatedAt()
-				+ ", updated at: " + this.getFormattedUpadatedAt()
+		return Color.CYAN_BOLD.toString() + "\tID: " + this.id + ", description: "
+				+ this.description + ",\tstatus: " + this.status
+				+ ",\tcreated at: " + this.getFormattedCreatedAt()
+				+ ",\tupdated at: " + this.getFormattedUpadatedAt()
 				+ Color.RESET.toString();
 	}
 
