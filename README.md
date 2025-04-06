@@ -3,9 +3,7 @@
 ## 1. OVERVIEW
 
 A Task-Tracker application with CLI interface.
-To run the application, download the "task-tracker.jar file" and launch it with
-***"java -jar path/to/file/task-tracker.jar"*** command.
-Upon first launch, the tasktracker.json file will be created inside the same folder of the .jar file.
+Upon first launch, the tasktracker.json file will be created.
 tasktracker.json stores all the tasks in json format. It is read every time the application starts and updated after
 every operation of add, delete, mark or update.
 
