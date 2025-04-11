@@ -121,6 +121,8 @@ Shutdown the application. Same action can be performed with "exit"
 
 The whole application is developed in Java language with no external libraries but org.json to manage JSON
 objects (https://github.com/stleary/JSON-java)
+
 This application is bases on roadmap.sh project (https://roadmap.sh/projects/task-tracker)
+
 Developed by Mattia Canopoli
 
